@@ -118,20 +118,57 @@ export default function Products() {
             }`}>
               {/* Product Image */}
               <div className="flex-1 max-w-2xl">
-                <div className="relative">
+                <motion.div
+                  className="relative overflow-hidden rounded-lg"
+                  initial={{ 
+                    scale: 0.8, 
+                    rotateY: index % 2 === 0 ? -15 : 15,
+                    opacity: 0 
+                  }}
+                  whileInView={{ 
+                    scale: 1, 
+                    rotateY: 0,
+                    opacity: 1 
+                  }}
+                  transition={{ 
+                    duration: 1.2, 
+                    delay: index * 0.2,
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 15
+                  }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  style={{ perspective: "1000px" }}
+                >
                   <Image
                     src={category.image}
                     alt={category.title}
                     width={600}
                     height={400}
-                    className="w-full h-auto object-contain"
+                    className="w-full h-auto object-contain transform-gpu"
                     priority={index < 2}
                   />
-                </div>
+                </motion.div>
               </div>
 
               {/* Product Details */}
-              <div className="flex-1 max-w-xl">
+              <motion.div 
+                className="flex-1 max-w-xl"
+                initial={{ 
+                  y: 30, 
+                  opacity: 0
+                }}
+                whileInView={{ 
+                  y: 0,
+                  opacity: 1
+                }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: index * 0.2 + 0.3,
+                  ease: "easeOut"
+                }}
+                viewport={{ once: true, margin: "-50px" }}
+              >
                 <div className="text-center lg:text-left">
                   {/* Description */}
                   <p className="text-gray-600 text-lg leading-relaxed mb-12">
@@ -163,7 +200,7 @@ export default function Products() {
                     VIEW MORE
                   </Button>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         ))}
