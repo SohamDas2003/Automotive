@@ -38,11 +38,10 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <motion.div
-            whileHover={{ scale: 1.05 }}
             className="flex items-center space-x-2"
           >
             <span className={`text-2xl font-bold ${isScrolled ? 'text-gray-900' : 'text-white'}`}>
-              <Image src="/logo.png" alt="Logo" width={300} height={120} className='object-cover' />
+              <Image src="/logo.png" alt="Logo" width={250} height={100} className='object-cover' />
             </span>
           </motion.div>
 

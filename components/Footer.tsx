@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { Facebook, Twitter, Linkedin as LinkedIn, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import Image from 'next/image';
+import { useState } from 'react';
 
 export default function Footer() {
   const footerLinks = {
@@ -10,7 +12,7 @@ export default function Footer() {
     Company: ['About Us', 'News', 'Careers', 'Contact'],
     Legal: ['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Disclaimer']
   };
-
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const socialLinks = [
     { icon: Facebook, href: '#', label: 'Facebook' },
     { icon: Twitter, href: '#', label: 'Twitter' },
@@ -31,10 +33,10 @@ export default function Footer() {
             className="lg:col-span-1"
           >
             <div className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-r from-amber-500 to-orange-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">J</span>
-              </div>
-              <span className="text-2xl font-bold">JAAPS</span>
+              
+              <span className={`text-2xl font-bold ${isScrolled ? 'text-gray-900' : 'text-white'}`}>
+                            <Image src="/logo.png" alt="Logo" width={300} height={120} className='object-cover' />
+                          </span>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Premium automotive spare parts for heavy-duty trucks and commercial vehicles. 
